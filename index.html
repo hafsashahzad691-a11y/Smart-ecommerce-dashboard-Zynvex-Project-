@@ -20,6 +20,11 @@
 <body>
 
     <!-- ================================================================ -->
+    <!-- SIDEBAR OVERLAY (Mobile Only) -->
+    <!-- ================================================================ -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <!-- ================================================================ -->
     <!-- SIDEBAR -->
     <!-- ================================================================ -->
     <nav class="sidebar" id="sidebar">
@@ -64,17 +69,25 @@
 
         <!-- Top Navbar -->
         <div class="top-navbar">
-            <div class="page-title">
-                <i class="fas fa-th-large"></i> Dashboard
-            </div>
-            <div class="nav-icons">
-                <i class="fas fa-moon" onclick="toggleTheme()"></i>
-                <i class="fas fa-bell"></i>
-                <i class="fas fa-user-circle"></i>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="d-flex align-items-center">
+                    <!-- Hamburger Menu Button (Mobile Only) -->
+                    <button class="hamburger-btn" onclick="openSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="page-title">
+                        <i class="fas fa-th-large"></i> Dashboard
+                    </div>
+                </div>
+                <div class="nav-icons">
+                    <i class="fas fa-moon" onclick="toggleTheme()"></i>
+                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-user-circle"></i>
+                </div>
             </div>
         </div>
 
-        <!-- Welcome Section - FIXED -->
+        <!-- Welcome Section -->
         <div class="welcome-section">
             <h1>Welcome back, Admin! <span>🥳</span></h1>
             <p>Here's what's happening with your store today.</p>

@@ -168,7 +168,7 @@ body {
 }
 
 /* ================================================================
-   WELCOME SECTION - FIXED
+   WELCOME SECTION
    ================================================================ */
 .welcome-section {
     margin-bottom: 32px;
@@ -261,28 +261,93 @@ body {
 }
 
 /* ================================================================
-   RESPONSIVE
+   HAMBURGER MENU BUTTON (Mobile Only)
+   ================================================================ */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #e8edf5;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 5px;
+}
+
+.hamburger-btn:hover {
+    color: #0d6efd;
+}
+
+/* ================================================================
+   SIDEBAR OVERLAY (Mobile Only)
+   ================================================================ */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+.sidebar-overlay.show {
+    display: block;
+}
+
+/* ================================================================
+   RESPONSIVE - TABLETS & MOBILE
    ================================================================ */
 @media (max-width: 992px) {
-    .sidebar {
-        transform: translateX(-100%);
+    /* Show hamburger button on mobile/tablet */
+    .hamburger-btn {
+        display: block;
     }
 
+    /* Hide sidebar by default on mobile/tablet */
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    /* Show sidebar when 'show' class is added */
     .sidebar.show {
         transform: translateX(0);
     }
 
+    /* Main content takes full width on mobile/tablet */
     .main-content {
         margin-left: 0;
         padding: 20px;
     }
 
+    /* Adjust welcome heading on mobile/tablet */
     .welcome-section h1 {
         font-size: 22px;
     }
+
+    /* Stat cards on mobile/tablet */
+    .stat-card {
+        padding: 16px 18px;
+    }
+
+    .stat-number {
+        font-size: 20px;
+    }
+
+    /* Top navbar on mobile/tablet */
+    .top-navbar {
+        flex-wrap: wrap;
+    }
 }
 
+/* ================================================================
+   RESPONSIVE - MOBILE PHONES
+   ================================================================ */
 @media (max-width: 576px) {
+    /* Stat cards stack vertically on phones */
     .stat-card {
         flex-direction: column;
         text-align: center;
@@ -290,20 +355,26 @@ body {
     }
 
     .stat-number {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .welcome-section h1 {
-        font-size: 19px;
-    }
-
-    .top-navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        font-size: 18px;
     }
 
     .main-content {
-        padding: 14px;
+        padding: 12px;
+    }
+
+    .top-navbar .page-title {
+        font-size: 16px;
+    }
+
+    .top-navbar .nav-icons {
+        gap: 12px;
+    }
+
+    .top-navbar .nav-icons i {
+        font-size: 16px;
     }
 }

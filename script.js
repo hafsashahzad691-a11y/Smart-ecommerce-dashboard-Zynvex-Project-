@@ -12,4 +12,18 @@ function toggleTheme() {
     }
 }
 
+// ================================================================
+// SIDEBAR TOGGLE FUNCTIONS (Mobile)
+// ================================================================
+
+function openSidebar() {
+    document.getElementById('sidebar').classList.add('show');
+    document.getElementById('sidebarOverlay').classList.add('show');
+}
+
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('show');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+}
+
 console.log('🚀 SmartShop Dashboard loaded successfully!');
