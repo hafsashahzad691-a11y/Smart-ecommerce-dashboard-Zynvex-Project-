@@ -57,6 +57,7 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .sidebar .nav-link:hover {
@@ -297,38 +298,243 @@ body {
 }
 
 /* ================================================================
+   PAGE SECTIONS (Show/Hide)
+   ================================================================ */
+.page-section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.page-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================================================
+   PRODUCT CARDS
+   ================================================================ */
+.product-card {
+    background: #0f1429;
+    border: 1px solid #1e2440;
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    border-color: #0d6efd;
+    box-shadow: 0 8px 30px rgba(13, 110, 253, 0.08);
+}
+
+.product-icon {
+    font-size: 32px;
+    color: #0d6efd;
+    margin-bottom: 8px;
+}
+
+.product-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 2px;
+    color: #e8edf5;
+}
+
+.product-price {
+    color: #0d6efd;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.product-category {
+    color: #5a6488;
+    font-size: 12px;
+}
+
+/* ================================================================
+   ORDERS TABLE
+   ================================================================ */
+.table {
+    color: #e8edf5;
+    font-size: 13px;
+}
+
+.table thead th {
+    border-bottom: 1px solid #1e2440;
+    color: #5a6488;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+}
+
+.table td {
+    border-bottom: 1px solid #1a2040;
+    padding: 12px 16px;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background: rgba(13, 110, 253, 0.04);
+}
+
+/* ================================================================
+   STATUS BADGES
+   ================================================================ */
+.badge-status {
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-delivered {
+    background: rgba(25, 135, 84, 0.15);
+    color: #198754;
+}
+
+.badge-processing {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+}
+
+.badge-shipped {
+    background: rgba(13, 202, 240, 0.15);
+    color: #0dcaf0;
+}
+
+.badge-cancelled {
+    background: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+}
+
+/* ================================================================
+   CARDS
+   ================================================================ */
+.card {
+    background: #0f1429;
+    border: 1px solid #1e2440;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid #1e2440;
+    padding: 16px 24px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #e8edf5;
+}
+
+.card-body {
+    padding: 20px 24px;
+}
+
+/* ================================================================
+   FORM ELEMENTS
+   ================================================================ */
+.form-control,
+.form-select {
+    background: #1a2040;
+    border: 1px solid #1e2440;
+    color: #e8edf5;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: #1a2040;
+    border-color: #0d6efd;
+    color: #e8edf5;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.form-control::placeholder {
+    color: #5a6488;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #8892b0;
+}
+
+/* ================================================================
+   TOGGLE SWITCH
+   ================================================================ */
+.toggle-switch {
+    width: 46px;
+    height: 24px;
+    background: #1e2440;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.toggle-switch .toggle-circle {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: 0.3s ease;
+}
+
+.toggle-switch.active {
+    background: #0d6efd;
+}
+
+.toggle-switch.active .toggle-circle {
+    left: 25px;
+}
+
+/* ================================================================
    RESPONSIVE - TABLETS & MOBILE
    ================================================================ */
 @media (max-width: 992px) {
-    /* Show hamburger button on mobile/tablet */
     .hamburger-btn {
         display: block;
     }
 
-    /* Hide sidebar by default on mobile/tablet */
     .sidebar {
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         z-index: 1000;
     }
 
-    /* Show sidebar when 'show' class is added */
     .sidebar.show {
         transform: translateX(0);
     }
 
-    /* Main content takes full width on mobile/tablet */
     .main-content {
         margin-left: 0;
         padding: 20px;
     }
 
-    /* Adjust welcome heading on mobile/tablet */
     .welcome-section h1 {
         font-size: 22px;
     }
 
-    /* Stat cards on mobile/tablet */
     .stat-card {
         padding: 16px 18px;
     }
@@ -337,7 +543,6 @@ body {
         font-size: 20px;
     }
 
-    /* Top navbar on mobile/tablet */
     .top-navbar {
         flex-wrap: wrap;
     }
@@ -347,7 +552,6 @@ body {
    RESPONSIVE - MOBILE PHONES
    ================================================================ */
 @media (max-width: 576px) {
-    /* Stat cards stack vertically on phones */
     .stat-card {
         flex-direction: column;
         text-align: center;
@@ -377,4 +581,187 @@ body {
     .top-navbar .nav-icons i {
         font-size: 16px;
     }
+
+    .product-card {
+        padding: 12px 8px;
+    }
+
+    .product-icon {
+        font-size: 24px;
+    }
+
+    .product-name {
+        font-size: 12px;
+    }
+
+    .product-price {
+        font-size: 14px;
+    }
+
+    .card-body {
+        padding: 14px 16px;
+    }
+
+    .table {
+        font-size: 12px;
+    }
+
+    .table td,
+    .table th {
+        padding: 8px 10px;
+    }
+
+    .badge-status {
+        font-size: 10px;
+        padding: 3px 10px;
+    }
+}
+
+/* ================================================================
+   LIGHT THEME (Optional)
+   ================================================================ */
+body.light-mode {
+    background: #f0f2f8;
+    color: #1a1a2e;
+}
+
+body.light-mode .sidebar {
+    background: #ffffff;
+    border-right: 1px solid #e2e6ee;
+}
+
+body.light-mode .sidebar .brand {
+    color: #1a1a2e;
+}
+
+body.light-mode .sidebar .nav-link {
+    color: #4a4a6a;
+}
+
+body.light-mode .sidebar .nav-link:hover {
+    background: #f0f2f8;
+    color: #0d6efd;
+}
+
+body.light-mode .sidebar .nav-link.active {
+    background: #0d6efd;
+    color: #ffffff;
+}
+
+body.light-mode .sidebar-footer {
+    border-top: 1px solid #e2e6ee;
+}
+
+body.light-mode .profile-name {
+    color: #1a1a2e;
+}
+
+body.light-mode .profile-role {
+    color: #6c7a8a;
+}
+
+body.light-mode .top-navbar {
+    border-bottom: 1px solid #e2e6ee;
+}
+
+body.light-mode .top-navbar .page-title {
+    color: #1a1a2e;
+}
+
+body.light-mode .top-navbar .nav-icons {
+    color: #4a4a6a;
+}
+
+body.light-mode .welcome-section h1 {
+    color: #1a1a2e;
+}
+
+body.light-mode .welcome-section p {
+    color: #6c7a8a;
+}
+
+body.light-mode .stat-card {
+    background: #ffffff;
+    border: 1px solid #e2e6ee;
+}
+
+body.light-mode .stat-number {
+    color: #1a1a2e;
+}
+
+body.light-mode .stat-label {
+    color: #6c7a8a;
+}
+
+body.light-mode .product-card {
+    background: #ffffff;
+    border: 1px solid #e2e6ee;
+}
+
+body.light-mode .product-name {
+    color: #1a1a2e;
+}
+
+body.light-mode .card {
+    background: #ffffff;
+    border: 1px solid #e2e6ee;
+}
+
+body.light-mode .card-header {
+    color: #1a1a2e;
+    border-bottom: 1px solid #e2e6ee;
+}
+
+body.light-mode .table {
+    color: #1a1a2e;
+}
+
+body.light-mode .table thead th {
+    color: #6c7a8a;
+    border-bottom: 1px solid #e2e6ee;
+}
+
+body.light-mode .table td {
+    border-bottom: 1px solid #f0f2f8;
+}
+
+body.light-mode .table tbody tr:hover {
+    background: rgba(13, 110, 253, 0.04);
+}
+
+body.light-mode .form-control,
+body.light-mode .form-select {
+    background: #ffffff;
+    color: #1a1a2e;
+    border: 1px solid #d0d5dd;
+}
+
+body.light-mode .form-control:focus,
+body.light-mode .form-select:focus {
+    background: #ffffff;
+    border-color: #0d6efd;
+}
+
+body.light-mode .form-label {
+    color: #4a4a6a;
+}
+
+body.light-mode .hamburger-btn {
+    color: #1a1a2e;
+}
+
+body.light-mode .hamburger-btn:hover {
+    color: #0d6efd;
+}
+
+body.light-mode .sidebar-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode .toggle-switch {
+    background: #d0d5dd;
+}
+
+body.light-mode .toggle-switch.active {
+    background: #0d6efd;
 }

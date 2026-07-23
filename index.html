@@ -33,19 +33,19 @@
         </div>
 
         <div class="nav-links">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active" data-page="dashboard" onclick="showPage('dashboard', this)">
                 <i class="fas fa-th-large"></i> Dashboard
             </a>
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" data-page="products" onclick="showPage('products', this)">
                 <i class="fas fa-box"></i> Products
             </a>
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" data-page="orders" onclick="showPage('orders', this)">
                 <i class="fas fa-shopping-cart"></i> Orders
             </a>
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" data-page="customers" onclick="showPage('customers', this)">
                 <i class="fas fa-users"></i> Customers
             </a>
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" data-page="settings" onclick="showPage('settings', this)">
                 <i class="fas fa-cog"></i> Settings
             </a>
         </div>
@@ -75,7 +75,7 @@
                     <button class="hamburger-btn" onclick="openSidebar()">
                         <i class="fas fa-bars"></i>
                     </button>
-                    <div class="page-title">
+                    <div class="page-title" id="pageTitle">
                         <i class="fas fa-th-large"></i> Dashboard
                     </div>
                 </div>
@@ -87,58 +87,351 @@
             </div>
         </div>
 
-        <!-- Welcome Section -->
-        <div class="welcome-section">
-            <h1>Welcome back, Admin! <span>🥳</span></h1>
-            <p>Here's what's happening with your store today.</p>
+        <!-- ============================================================ -->
+        <!-- PAGE 1: DASHBOARD (Default Visible) -->
+        <!-- ============================================================ -->
+        <div class="page-section active" id="page-dashboard">
+
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h1>Welcome back, Admin! <span>🥳</span></h1>
+                <p>Here's what's happening with your store today.</p>
+            </div>
+
+            <!-- Stat Cards -->
+            <div class="row g-4">
+                <div class="col-xl-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">$24,560</div>
+                            <div class="stat-label">Total Sales</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Total Orders</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Total Customers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Total Products</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Stat Cards -->
-        <div class="row g-4">
-            <div class="col-xl-3 col-md-6">
-                <div class="stat-card">
-                    <div class="stat-icon purple">
-                        <i class="fas fa-dollar-sign"></i>
+        <!-- ============================================================ -->
+        <!-- PAGE 2: PRODUCTS -->
+        <!-- ============================================================ -->
+        <div class="page-section" id="page-products">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4><i class="fas fa-box me-2 text-primary"></i>Products</h4>
+                <button class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i> Add Product
+                </button>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Search products..." />
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select">
+                        <option>All Categories</option>
+                        <option>Electronics</option>
+                        <option>Fashion</option>
+                        <option>Home & Living</option>
+                        <option>Beauty</option>
+                        <option>Sports</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-headphones"></i></div>
+                        <div class="product-name">Wireless Headphones</div>
+                        <div class="product-price">$89.99</div>
+                        <div class="product-category">Electronics</div>
                     </div>
-                    <div class="stat-content">
-                        <div class="stat-number">$24,560</div>
-                        <div class="stat-label">Total Sales</div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-clock"></i></div>
+                        <div class="product-name">Smart Watch Series 5</div>
+                        <div class="product-price">$159.99</div>
+                        <div class="product-category">Electronics</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-tshirt"></i></div>
+                        <div class="product-name">Cotton T-Shirt</div>
+                        <div class="product-price">$19.99</div>
+                        <div class="product-category">Fashion</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-shoe-prints"></i></div>
+                        <div class="product-name">Running Shoes</div>
+                        <div class="product-price">$69.99</div>
+                        <div class="product-category">Sports</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-bag"></i></div>
+                        <div class="product-name">Travel Backpack</div>
+                        <div class="product-price">$49.99</div>
+                        <div class="product-category">Fashion</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-music"></i></div>
+                        <div class="product-name">Bluetooth Speaker</div>
+                        <div class="product-price">$39.99</div>
+                        <div class="product-category">Electronics</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-spa"></i></div>
+                        <div class="product-name">Face Cream</div>
+                        <div class="product-price">$24.99</div>
+                        <div class="product-category">Beauty</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-lamp"></i></div>
+                        <div class="product-name">Desk Lamp</div>
+                        <div class="product-price">$34.99</div>
+                        <div class="product-category">Home & Living</div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="stat-card">
-                    <div class="stat-icon blue">
-                        <i class="fas fa-shopping-bag"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="stat-number">8</div>
-                        <div class="stat-label">Total Orders</div>
+
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PAGE 3: ORDERS -->
+        <!-- ============================================================ -->
+        <div class="page-section" id="page-orders">
+
+            <h4 class="mb-4"><i class="fas fa-shopping-cart me-2 text-primary"></i>Orders</h4>
+
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Email</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#ORD-001</strong></td>
+                                    <td>John Doe</td>
+                                    <td>john@email.com</td>
+                                    <td>May 31, 2025</td>
+                                    <td>$250.00</td>
+                                    <td><span class="badge-status badge-delivered">Delivered</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#ORD-002</strong></td>
+                                    <td>Sarah Smith</td>
+                                    <td>sarah@email.com</td>
+                                    <td>May 30, 2025</td>
+                                    <td>$150.00</td>
+                                    <td><span class="badge-status badge-processing">Processing</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#ORD-003</strong></td>
+                                    <td>Mike Johnson</td>
+                                    <td>mike@email.com</td>
+                                    <td>May 29, 2025</td>
+                                    <td>$320.00</td>
+                                    <td><span class="badge-status badge-shipped">Shipped</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#ORD-004</strong></td>
+                                    <td>Emily Davis</td>
+                                    <td>emily@email.com</td>
+                                    <td>May 28, 2025</td>
+                                    <td>$180.00</td>
+                                    <td><span class="badge-status badge-cancelled">Cancelled</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#ORD-005</strong></td>
+                                    <td>David Wilson</td>
+                                    <td>david@email.com</td>
+                                    <td>May 27, 2025</td>
+                                    <td>$275.00</td>
+                                    <td><span class="badge-status badge-delivered">Delivered</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="stat-card">
-                    <div class="stat-icon green">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="stat-number">6</div>
-                        <div class="stat-label">Total Customers</div>
+
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PAGE 4: CUSTOMERS -->
+        <!-- ============================================================ -->
+        <div class="page-section" id="page-customers">
+
+            <h4 class="mb-4"><i class="fas fa-users me-2 text-primary"></i>Customers</h4>
+
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Total Orders</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>John Doe</strong></td>
+                                    <td>john@email.com</td>
+                                    <td>+1 234 567 8901</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sarah Smith</strong></td>
+                                    <td>sarah@email.com</td>
+                                    <td>+1 234 567 8902</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mike Johnson</strong></td>
+                                    <td>mike@email.com</td>
+                                    <td>+1 234 567 8903</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Emily Davis</strong></td>
+                                    <td>emily@email.com</td>
+                                    <td>+1 234 567 8904</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>David Wilson</strong></td>
+                                    <td>david@email.com</td>
+                                    <td>+1 234 567 8905</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Lisa Taylor</strong></td>
+                                    <td>lisa@email.com</td>
+                                    <td>+1 234 567 8906</td>
+                                    <td>6</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="stat-card">
-                    <div class="stat-icon orange">
-                        <i class="fas fa-boxes"></i>
+
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- PAGE 5: SETTINGS -->
+        <!-- ============================================================ -->
+        <div class="page-section" id="page-settings">
+
+            <h4 class="mb-4"><i class="fas fa-cog me-2 text-primary"></i>Settings</h4>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-user me-2"></i>Profile Settings</div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" value="Hafsa Shahzad" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" value="admin@smartshop.com" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Role</label>
+                                <input type="text" class="form-control" value="Administrator" disabled />
+                            </div>
+                            <button class="btn btn-primary btn-sm"><i class="fas fa-save me-1"></i>Update Profile</button>
+                        </div>
                     </div>
-                    <div class="stat-content">
-                        <div class="stat-number">8</div>
-                        <div class="stat-label">Total Products</div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-sliders-h me-2"></i>Preferences</div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span><i class="fas fa-moon me-2"></i> Dark Mode</span>
+                                <div class="toggle-switch" id="darkModeToggle" onclick="toggleTheme()">
+                                    <div class="toggle-circle"></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span><i class="fas fa-bell me-2"></i> Email Notifications</span>
+                                <div class="toggle-switch active" id="notificationToggle" onclick="toggleNotification()">
+                                    <div class="toggle-circle"></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-sign-out-alt me-1"></i>Logout</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
     </main>
