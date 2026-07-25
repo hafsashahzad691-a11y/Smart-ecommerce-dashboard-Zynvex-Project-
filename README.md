@@ -13,7 +13,6 @@ smart-ecommerce-dashboard/
 └── script.js # JavaScript functionality
 
 ## 🚀 Features
-
 - 📊 Dashboard with sales statistics
 - 📦 Product management
 - 🛒 Order tracking
