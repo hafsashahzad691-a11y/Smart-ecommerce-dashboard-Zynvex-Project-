@@ -1,7 +1,6 @@
 // ================================================================
 // THEME TOGGLE (Dark/Light)
 // ================================================================
-
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
     const icon = document.querySelector('.top-navbar .nav-icons i:first-child');
