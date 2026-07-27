@@ -1,6 +1,7 @@
 // ================================================================
 // THEME TOGGLE (Dark/Light)
 // ================================================================
+
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
     const icon = document.querySelector('.top-navbar .nav-icons i:first-child');
@@ -26,7 +27,7 @@ function closeSidebar() {
 }
 
 // ================================================================
-// PAGE NAVIGATION (Day 4)
+// PAGE NAVIGATION
 // ================================================================
 
 function showPage(pageId, element) {
@@ -73,7 +74,7 @@ function showPage(pageId, element) {
 }
 
 // ================================================================
-// NOTIFICATION TOGGLE (Day 5)
+// NOTIFICATION TOGGLE
 // ================================================================
 
 function toggleNotification() {
@@ -82,10 +83,46 @@ function toggleNotification() {
 }
 
 // ================================================================
-// INITIALIZE - Set Dashboard as default page
+// PRODUCT DATA (8 Products) - DAY 1
 // ================================================================
 
-// Ensure Dashboard is visible on load
+const productsData = [
+    { id: 1, name: "Wireless Headphones", price: 89.99, category: "Electronics" },
+    { id: 2, name: "Smart Watch Series 5", price: 159.99, category: "Electronics" },
+    { id: 3, name: "Cotton T-Shirt", price: 19.99, category: "Fashion" },
+    { id: 4, name: "Running Shoes", price: 69.99, category: "Sports" },
+    { id: 5, name: "Travel Backpack", price: 49.99, category: "Fashion" },
+    { id: 6, name: "Bluetooth Speaker", price: 39.99, category: "Electronics" },
+    { id: 7, name: "Face Cream", price: 24.99, category: "Beauty" },
+    { id: 8, name: "Desk Lamp", price: 34.99, category: "Home & Living" }
+];
+
+// ================================================================
+// RENDER PRODUCTS - DAY 1
+// ================================================================
+
+function renderProducts() {
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = '';
+
+    productsData.forEach(product => {
+        grid.innerHTML += `
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-box"></i></div>
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="product-category">${product.category}</div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// ================================================================
+// INITIALIZE
+// ================================================================
+
 document.addEventListener('DOMContentLoaded', function() {
     // Show dashboard page
     document.querySelectorAll('.page-section').forEach(section => {
@@ -110,7 +147,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (darkToggle) {
         darkToggle.classList.remove('active');
     }
+
+    // Load products on page load
+    renderProducts();
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 1 Complete!');
+console.log('📊 Module 2 - Day 1 Complete! Products data added!');
