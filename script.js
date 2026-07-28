@@ -83,7 +83,7 @@ function toggleNotification() {
 }
 
 // ================================================================
-// PRODUCT DATA (8 Products) - DAY 1
+// PRODUCT DATA (8 Products)
 // ================================================================
 
 const productsData = [
@@ -98,7 +98,7 @@ const productsData = [
 ];
 
 // ================================================================
-// RENDER PRODUCTS - DAY 1
+// RENDER PRODUCTS
 // ================================================================
 
 function renderProducts() {
@@ -106,6 +106,51 @@ function renderProducts() {
     grid.innerHTML = '';
 
     productsData.forEach(product => {
+        grid.innerHTML += `
+            <div class="col-lg-3 col-md-4 col-6">
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-box"></i></div>
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="product-category">${product.category}</div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// ================================================================
+// SEARCH PRODUCTS - DAY 2
+// ================================================================
+
+function searchProducts() {
+    // Get the search term from the input field
+    const searchTerm = document.getElementById('productSearch').value.toLowerCase();
+    
+    // Get the product grid container
+    const grid = document.getElementById('productGrid');
+    
+    // Clear the grid
+    grid.innerHTML = '';
+
+    // Filter products based on search term
+    const filteredProducts = productsData.filter(product => {
+        return product.name.toLowerCase().includes(searchTerm);
+    });
+
+    // If no products found, show message
+    if (filteredProducts.length === 0) {
+        grid.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <i class="fas fa-box-open" style="font-size: 48px; color: #5a6488;"></i>
+                <p class="text-muted mt-3">No products found</p>
+            </div>
+        `;
+        return;
+    }
+
+    // Display filtered products
+    filteredProducts.forEach(product => {
         grid.innerHTML += `
             <div class="col-lg-3 col-md-4 col-6">
                 <div class="product-card">
@@ -153,4 +198,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 2 - Day 1 Complete! Products data added!');
+console.log('📊 Module 2 - Day 2 Complete! Search functionality added!');

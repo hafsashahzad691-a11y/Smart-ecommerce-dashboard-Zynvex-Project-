@@ -149,7 +149,7 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- PAGE 2: PRODUCTS -->
+        <!-- PAGE 2: PRODUCTS (UPDATED FOR DAY 2) -->
         <!-- ============================================================ -->
         <div class="page-section" id="page-products">
 
@@ -160,87 +160,26 @@
                 </button>
             </div>
 
+            <!-- Search and Filter - UPDATED with IDs and onkeyup -->
             <div class="row g-3 mb-4">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Search products..." />
+                    <input type="text" class="form-control" id="productSearch" placeholder="Search products..." onkeyup="searchProducts()" />
                 </div>
                 <div class="col-md-4">
-                    <select class="form-select">
-                        <option>All Categories</option>
-                        <option>Electronics</option>
-                        <option>Fashion</option>
-                        <option>Home & Living</option>
-                        <option>Beauty</option>
-                        <option>Sports</option>
+                    <select class="form-select" id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Home & Living">Home & Living</option>
+                        <option value="Beauty">Beauty</option>
+                        <option value="Sports">Sports</option>
                     </select>
                 </div>
             </div>
 
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="product-card">
-                        <div class="product-icon"><i class="fas fa-headphones"></i></div>
-                        <div class="product-name">Wireless Headphones</div>
-                        <div class="product-price">$89.99</div>
-                        <div class="product-category">Electronics</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="product-card">
-                        <div class="product-icon"><i class="fas fa-clock"></i></div>
-                        <div class="product-name">Smart Watch Series 5</div>
-                        <div class="product-price">$159.99</div>
-                        <div class="product-category">Electronics</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="product-card">
-                        <div class="product-icon"><i class="fas fa-tshirt"></i></div>
-                        <div class="product-name">Cotton T-Shirt</div>
-                        <div class="product-price">$19.99</div>
-                        <div class="product-category">Fashion</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="product-card">
-                        <div class="product-icon"><i class="fas fa-shoe-prints"></i></div>
-                        <div class="product-name">Running Shoes</div>
-                        <div class="product-price">$69.99</div>
-                        <div class="product-category">Sports</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="product-card">
-                        <div class="product-icon"><i class="fas fa-bag"></i></div>
-                        <div class="product-name">Travel Backpack</div>
-                        <div class="product-price">$49.99</div>
-                        <div class="product-category">Fashion</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="product-card">
-                        <div class="product-icon"><i class="fas fa-music"></i></div>
-                        <div class="product-name">Bluetooth Speaker</div>
-                        <div class="product-price">$39.99</div>
-                        <div class="product-category">Electronics</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="product-card">
-                        <div class="product-icon"><i class="fas fa-spa"></i></div>
-                        <div class="product-name">Face Cream</div>
-                        <div class="product-price">$24.99</div>
-                        <div class="product-category">Beauty</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6">
-                    <div class="product-card">
-                        <div class="product-icon"><i class="fas fa-lamp"></i></div>
-                        <div class="product-name">Desk Lamp</div>
-                        <div class="product-price">$34.99</div>
-                        <div class="product-category">Home & Living</div>
-                    </div>
-                </div>
+            <!-- Product Grid - Now empty, filled by JavaScript -->
+            <div class="row g-4" id="productGrid">
+                <!-- Products will be loaded here by JavaScript -->
             </div>
 
         </div>
