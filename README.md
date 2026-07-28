@@ -6,7 +6,6 @@ A responsive admin dashboard for managing e-commerce store operations.
 - **End Date:** August 15, 2026
 ## 📁 Project Structure
 smart-ecommerce-dashboard/
-│
 ├── index.html # Main HTML file
 ├── style.css # Custom CSS styles
 └── script.js # JavaScript functionality
