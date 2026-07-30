@@ -120,22 +120,27 @@ function renderProducts() {
 }
 
 // ================================================================
-// SEARCH PRODUCTS - DAY 2
+// FILTER PRODUCTS (Search + Category) - DAY 3
 // ================================================================
 
-function searchProducts() {
-    // Get the search term from the input field
+function filterProducts() {
+    // Get search term from input
     const searchTerm = document.getElementById('productSearch').value.toLowerCase();
     
-    // Get the product grid container
+    // Get category from dropdown
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    
+    // Get product grid container
     const grid = document.getElementById('productGrid');
     
     // Clear the grid
     grid.innerHTML = '';
 
-    // Filter products based on search term
+    // Filter products based on search term AND category
     const filteredProducts = productsData.filter(product => {
-        return product.name.toLowerCase().includes(searchTerm);
+        const matchesSearch = product.name.toLowerCase().includes(searchTerm);
+        const matchesCategory = categoryFilter === 'all' || product.category === categoryFilter;
+        return matchesSearch && matchesCategory;
     });
 
     // If no products found, show message
@@ -160,6 +165,62 @@ function searchProducts() {
                     <div class="product-category">${product.category}</div>
                 </div>
             </div>
+        `;
+    });
+}
+
+// ================================================================
+// ORDERS DATA (8 Orders) - DAY 4
+// ================================================================
+
+const ordersData = [
+    { id: "ORD-001", customer: "John Doe", email: "john@email.com", date: "2025-05-31", amount: 250.00, status: "Delivered" },
+    { id: "ORD-002", customer: "Sarah Smith", email: "sarah@email.com", date: "2025-05-30", amount: 150.00, status: "Processing" },
+    { id: "ORD-003", customer: "Mike Johnson", email: "mike@email.com", date: "2025-05-29", amount: 320.00, status: "Shipped" },
+    { id: "ORD-004", customer: "Emily Davis", email: "emily@email.com", date: "2025-05-28", amount: 180.00, status: "Cancelled" },
+    { id: "ORD-005", customer: "David Wilson", email: "david@email.com", date: "2025-05-27", amount: 275.00, status: "Delivered" },
+    { id: "ORD-006", customer: "Lisa Taylor", email: "lisa@email.com", date: "2025-05-26", amount: 95.00, status: "Processing" },
+    { id: "ORD-007", customer: "Robert Brown", email: "robert@email.com", date: "2025-05-25", amount: 210.00, status: "Shipped" },
+    { id: "ORD-008", customer: "Amanda Lee", email: "amanda@email.com", date: "2025-05-24", amount: 130.00, status: "Delivered" }
+];
+
+// ================================================================
+// RENDER ORDERS - DAY 4
+// ================================================================
+
+function renderOrders() {
+    const tableBody = document.getElementById('ordersTableBody');
+    tableBody.innerHTML = '';
+
+    ordersData.forEach(order => {
+        // Determine status badge class
+        let statusClass = '';
+        switch(order.status.toLowerCase()) {
+            case 'delivered':
+                statusClass = 'badge-delivered';
+                break;
+            case 'processing':
+                statusClass = 'badge-processing';
+                break;
+            case 'shipped':
+                statusClass = 'badge-shipped';
+                break;
+            case 'cancelled':
+                statusClass = 'badge-cancelled';
+                break;
+            default:
+                statusClass = 'badge-processing';
+        }
+
+        tableBody.innerHTML += `
+            <tr>
+                <td><strong>#${order.id}</strong></td>
+                <td>${order.customer}</td>
+                <td>${order.email}</td>
+                <td>${order.date}</td>
+                <td>$${order.amount.toFixed(2)}</td>
+                <td><span class="badge-status ${statusClass}">${order.status}</span></td>
+            </tr>
         `;
     });
 }
@@ -195,7 +256,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load products on page load
     renderProducts();
+    
+    // Load orders on page load - DAY 4
+    renderOrders();
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 2 - Day 2 Complete! Search functionality added!');
+console.log('📊 Module 2 - Day 3 & 4 Complete! Category filter and orders data added!');
