@@ -103,6 +103,7 @@ const productsData = [
 
 function renderProducts() {
     const grid = document.getElementById('productGrid');
+    if (!grid) return;
     grid.innerHTML = '';
 
     productsData.forEach(product => {
@@ -124,26 +125,18 @@ function renderProducts() {
 // ================================================================
 
 function filterProducts() {
-    // Get search term from input
     const searchTerm = document.getElementById('productSearch').value.toLowerCase();
-    
-    // Get category from dropdown
     const categoryFilter = document.getElementById('categoryFilter').value;
-    
-    // Get product grid container
     const grid = document.getElementById('productGrid');
-    
-    // Clear the grid
+    if (!grid) return;
     grid.innerHTML = '';
 
-    // Filter products based on search term AND category
     const filteredProducts = productsData.filter(product => {
         const matchesSearch = product.name.toLowerCase().includes(searchTerm);
         const matchesCategory = categoryFilter === 'all' || product.category === categoryFilter;
         return matchesSearch && matchesCategory;
     });
 
-    // If no products found, show message
     if (filteredProducts.length === 0) {
         grid.innerHTML = `
             <div class="col-12 text-center py-5">
@@ -154,7 +147,6 @@ function filterProducts() {
         return;
     }
 
-    // Display filtered products
     filteredProducts.forEach(product => {
         grid.innerHTML += `
             <div class="col-lg-3 col-md-4 col-6">
@@ -190,10 +182,10 @@ const ordersData = [
 
 function renderOrders() {
     const tableBody = document.getElementById('ordersTableBody');
+    if (!tableBody) return;
     tableBody.innerHTML = '';
 
     ordersData.forEach(order => {
-        // Determine status badge class
         let statusClass = '';
         switch(order.status.toLowerCase()) {
             case 'delivered':
@@ -217,6 +209,102 @@ function renderOrders() {
                 <td><strong>#${order.id}</strong></td>
                 <td>${order.customer}</td>
                 <td>${order.email}</td>
+                <td>${order.date}</td>
+                <td>$${order.amount.toFixed(2)}</td>
+                <td><span class="badge-status ${statusClass}">${order.status}</span></td>
+            </tr>
+        `;
+    });
+}
+
+// ================================================================
+// UPDATE DASHBOARD STATS - DAY 5
+// ================================================================
+
+function updateDashboardStats() {
+    const totalSales = ordersData.reduce((sum, order) => sum + order.amount, 0);
+    const totalOrders = ordersData.length;
+    const totalCustomers = 6; // Fixed number of customers
+    const totalProducts = productsData.length;
+
+    const statNumbers = document.querySelectorAll('.stat-card .stat-number');
+    if (statNumbers.length >= 4) {
+        statNumbers[0].textContent = '$' + totalSales.toLocaleString();
+        statNumbers[1].textContent = totalOrders;
+        statNumbers[2].textContent = totalCustomers;
+        statNumbers[3].textContent = totalProducts;
+    }
+}
+
+// ================================================================
+// RENDER RECENT ORDERS ON DASHBOARD - DAY 5
+// ================================================================
+
+function renderRecentOrders() {
+    let recentContainer = document.getElementById('recentOrdersContainer');
+    
+    if (!recentContainer) {
+        const dashboardPage = document.getElementById('page-dashboard');
+        if (!dashboardPage) return;
+        
+        const recentOrdersHTML = `
+            <div class="row g-4 mt-4" id="recentOrdersContainer">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">Recent Orders</div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer</th>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentOrdersTableBody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        dashboardPage.insertAdjacentHTML('beforeend', recentOrdersHTML);
+        recentContainer = document.getElementById('recentOrdersContainer');
+    }
+
+    const tableBody = document.getElementById('recentOrdersTableBody');
+    if (!tableBody) return;
+    tableBody.innerHTML = '';
+
+    const recentOrders = ordersData.slice(0, 5);
+    recentOrders.forEach(order => {
+        let statusClass = '';
+        switch(order.status.toLowerCase()) {
+            case 'delivered':
+                statusClass = 'badge-delivered';
+                break;
+            case 'processing':
+                statusClass = 'badge-processing';
+                break;
+            case 'shipped':
+                statusClass = 'badge-shipped';
+                break;
+            case 'cancelled':
+                statusClass = 'badge-cancelled';
+                break;
+            default:
+                statusClass = 'badge-processing';
+        }
+
+        tableBody.innerHTML += `
+            <tr>
+                <td><strong>#${order.id}</strong></td>
+                <td>${order.customer}</td>
                 <td>${order.date}</td>
                 <td>$${order.amount.toFixed(2)}</td>
                 <td><span class="badge-status ${statusClass}">${order.status}</span></td>
@@ -254,12 +342,18 @@ document.addEventListener('DOMContentLoaded', function() {
         darkToggle.classList.remove('active');
     }
 
-    // Load products on page load
+    // Load products
     renderProducts();
     
-    // Load orders on page load - DAY 4
+    // Load orders
     renderOrders();
+    
+    // Update dashboard stats - DAY 5
+    updateDashboardStats();
+    
+    // Render recent orders on dashboard - DAY 5
+    renderRecentOrders();
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 2 - Day 3 & 4 Complete! Category filter and orders data added!');
+console.log('📊 Module 2 - Day 5 Complete! Dashboard stats and recent orders added!');
