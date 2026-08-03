@@ -6,7 +6,6 @@ A responsive admin dashboard for managing e-commerce store operations.
 
 - **Start Date:** July 20, 2026
 - **End Date:** August 15, 2026
-
 ## 📁 Project Structure
 smart-ecommerce-dashboard/
 │
@@ -29,7 +28,12 @@ smart-ecommerce-dashboard/
 - CSS3
 - Bootstrap 5
 - JavaScript
+- Chart.js
 - Font Awesome
+## 🎯 How to Run
+
+1. Clone the repository
+2. Open `index.html` in your browser
 
 ## 📊 Modules
 
@@ -39,8 +43,8 @@ smart-ecommerce-dashboard/
 | Products | Product catalog with search and filter |
 | Orders | Order tracking with status badges |
 | Customers | Customer information and history |
-| Settings | Profile and theme preferences |
-## Author
+| Settings | Profile and theme preferences
+## 👤 Author
 
 **Hafsa Shahzad**
 
@@ -48,64 +52,14 @@ smart-ecommerce-dashboard/
 
 ## 📅 Progress Report
 
-### Module 1 (July 20 - July 26, 2026) - ✅ COMPLETE
+### Module 1 (July 20 - July 26, 2026)
 
-#### Day 1 - Completed (July 20, 2026)
-- ✅ Project setup with HTML, CSS, JS files
-- ✅ Bootstrap, Font Awesome, Chart.js CDN integration
-- ✅ Sidebar with 5 navigation links
-- ✅ Dashboard with 4 stat cards
-- ✅ Initial commit to GitHub
+Project setup completed with HTML, CSS, JS files and CDN integrations. Built responsive sidebar with 5 navigation links and Dashboard with 4 stat cards. Added collapsible sidebar for mobile devices and page navigation functionality.
 
-#### Day 2 - Completed (July 21, 2026)
-- ✅ Sidebar hover effects added
-- ✅ Active state styling
-- ✅ Fixed sidebar position
-- ✅ Profile section added at bottom
-- ✅ Welcome section fixed
-- ✅ Dashboard layout improved
-- ✅ Separate CSS file created
+### Module 2 (July 27 - August 2, 2026)
 
-#### Day 3 - Completed (July 22, 2026)
-- ✅ Hamburger menu button added
-- ✅ Sidebar hides on mobile devices
-- ✅ Sidebar slides in with animation
-- ✅ Overlay added to close sidebar
-- ✅ Mobile responsive complete
+Added product data with search and category filter functionality. Created orders data with color-coded status badges. Updated dashboard stats with real data and added recent orders section.
 
-#### Day 4 - Completed (July 23, 2026)
-- ✅ Page navigation functionality
-- ✅ Products, Orders, Customers, Settings pages
+### Module 3 (August 3 - August 9, 2026)
 
-#### Day 5 - Completed (July 24, 2026)
-- ✅ Module 1 final review and polish
-- ✅ All pages functional and responsive
-
----
-
-### Module 2 (July 27 - August 2, 2026) - ✅ COMPLETE
-
-#### Day 1 - Completed (July 27, 2026)
-- ✅ Product data added (8 products with name, price, category)
-- ✅ renderProducts() function created
-- ✅ Products display dynamically on page
-
-#### Day 2 - Completed (July 28, 2026)
-- ✅ Search functionality for products
-- ✅ Real-time filtering as user types
-- ✅ "No products found" message added
-
-#### Day 3 - Completed (July 29, 2026)
-- ✅ Category filter for products
-- ✅ Search and filter work together
-- ✅ Dynamic product filtering
-
-#### Day 4 - Completed (July 30, 2026)
-- ✅ Orders data added (8 orders)
-- ✅ Orders table with Order ID, Customer, Email, Date, Amount, Status
-- ✅ Color-coded status badges (Delivered, Processing, Shipped, Cancelled)
-
-#### Day 5 - Completed (July 31, 2026)
-- ✅ Dashboard stats updated with real data
-- ✅ Recent orders displayed on dashboard
-- ✅ Module 2 final testing and polish
+Added customer data with name, email, phone, and total orders. Created dynamic customer table. Built settings page with profile section and preference toggles. Implemented dark/light mode switching. Added sales chart on dashboard using Chart.js. Displayed top selling products on dashboard.
