@@ -121,7 +121,7 @@ function renderProducts() {
 }
 
 // ================================================================
-// FILTER PRODUCTS (Search + Category) - DAY 3
+// FILTER PRODUCTS (Search + Category)
 // ================================================================
 
 function filterProducts() {
@@ -162,7 +162,7 @@ function filterProducts() {
 }
 
 // ================================================================
-// ORDERS DATA (8 Orders) - DAY 4
+// ORDERS DATA (8 Orders)
 // ================================================================
 
 const ordersData = [
@@ -177,7 +177,7 @@ const ordersData = [
 ];
 
 // ================================================================
-// RENDER ORDERS - DAY 4
+// RENDER ORDERS
 // ================================================================
 
 function renderOrders() {
@@ -218,13 +218,47 @@ function renderOrders() {
 }
 
 // ================================================================
-// UPDATE DASHBOARD STATS - DAY 5
+// CUSTOMER DATA (6 Customers) - MODULE 3 DAY 1
+// ================================================================
+
+const customersData = [
+    { name: "John Doe", email: "john@email.com", phone: "+1 234 567 8901", orders: 5 },
+    { name: "Sarah Smith", email: "sarah@email.com", phone: "+1 234 567 8902", orders: 3 },
+    { name: "Mike Johnson", email: "mike@email.com", phone: "+1 234 567 8903", orders: 4 },
+    { name: "Emily Davis", email: "emily@email.com", phone: "+1 234 567 8904", orders: 2 },
+    { name: "David Wilson", email: "david@email.com", phone: "+1 234 567 8905", orders: 3 },
+    { name: "Lisa Taylor", email: "lisa@email.com", phone: "+1 234 567 8906", orders: 6 }
+];
+
+// ================================================================
+// RENDER CUSTOMERS - MODULE 3 DAY 1
+// ================================================================
+
+function renderCustomers() {
+    const tableBody = document.getElementById('customersTableBody');
+    if (!tableBody) return;
+    tableBody.innerHTML = '';
+
+    customersData.forEach(customer => {
+        tableBody.innerHTML += `
+            <tr>
+                <td><strong>${customer.name}</strong></td>
+                <td>${customer.email}</td>
+                <td>${customer.phone}</td>
+                <td>${customer.orders}</td>
+            </tr>
+        `;
+    });
+}
+
+// ================================================================
+// UPDATE DASHBOARD STATS
 // ================================================================
 
 function updateDashboardStats() {
     const totalSales = ordersData.reduce((sum, order) => sum + order.amount, 0);
     const totalOrders = ordersData.length;
-    const totalCustomers = 6; // Fixed number of customers
+    const totalCustomers = customersData.length;
     const totalProducts = productsData.length;
 
     const statNumbers = document.querySelectorAll('.stat-card .stat-number');
@@ -237,7 +271,7 @@ function updateDashboardStats() {
 }
 
 // ================================================================
-// RENDER RECENT ORDERS ON DASHBOARD - DAY 5
+// RENDER RECENT ORDERS ON DASHBOARD
 // ================================================================
 
 function renderRecentOrders() {
@@ -348,12 +382,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load orders
     renderOrders();
     
-    // Update dashboard stats - DAY 5
+    // Load customers - MODULE 3 DAY 1
+    renderCustomers();
+    
+    // Update dashboard stats
     updateDashboardStats();
     
-    // Render recent orders on dashboard - DAY 5
+    // Render recent orders on dashboard
     renderRecentOrders();
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 2 - Day 5 Complete! Dashboard stats and recent orders added!');
+console.log('📊 Module 3 - Day 1 Complete! Customer data added!');
