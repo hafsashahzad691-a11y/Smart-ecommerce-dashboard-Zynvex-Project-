@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="nav-icons">
-                    <i class="fas fa-moon" onclick="toggleTheme()"></i>
+                    <i class="fas fa-moon" id="themeIcon" onclick="toggleTheme()"></i>
                     <i class="fas fa-bell"></i>
                     <i class="fas fa-user-circle"></i>
                 </div>
@@ -216,7 +216,7 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- PAGE 4: CUSTOMERS (UPDATED FOR MODULE 3 DAY 1) -->
+        <!-- PAGE 4: CUSTOMERS -->
         <!-- ============================================================ -->
         <div class="page-section" id="page-customers">
 
@@ -245,7 +245,7 @@
         </div>
 
         <!-- ============================================================ -->
-        <!-- PAGE 5: SETTINGS -->
+        <!-- PAGE 5: SETTINGS (UPDATED FOR DAY 2) -->
         <!-- ============================================================ -->
         <div class="page-section" id="page-settings">
 
@@ -255,20 +255,23 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header"><i class="fas fa-user me-2"></i>Profile Settings</div>
-                        <div class="card-body">
+                        <div class="card-body" id="profileSettings">
                             <div class="mb-3">
                                 <label class="form-label">Full Name</label>
-                                <input type="text" class="form-control" value="Hafsa Shahzad" />
+                                <input type="text" class="form-control" id="profileName" value="Hafsa Shahzad" />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" value="admin@smartshop.com" />
+                                <input type="email" class="form-control" id="profileEmail" value="admin@smartshop.com" />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Role</label>
-                                <input type="text" class="form-control" value="Administrator" disabled />
+                                <input type="text" class="form-control" id="profileRole" value="Administrator" disabled />
                             </div>
-                            <button class="btn btn-primary btn-sm"><i class="fas fa-save me-1"></i>Update Profile</button>
+                            <button class="btn btn-primary btn-sm" onclick="updateProfile()">
+                                <i class="fas fa-save me-1"></i>Update Profile
+                            </button>
+                            <div id="profileUpdateMessage" class="mt-2" style="display: none;"></div>
                         </div>
                     </div>
                 </div>

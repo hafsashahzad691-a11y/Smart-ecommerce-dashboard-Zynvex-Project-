@@ -1,14 +1,40 @@
 // ================================================================
-// THEME TOGGLE (Dark/Light)
+// THEME TOGGLE (Dark/Light) - UPDATED FOR DAY 3
 // ================================================================
 
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
-    const icon = document.querySelector('.top-navbar .nav-icons i:first-child');
+    const icon = document.getElementById('themeIcon');
+    const darkToggle = document.getElementById('darkModeToggle');
+    
     if (document.body.classList.contains('light-mode')) {
         icon.className = 'fas fa-sun';
+        if (darkToggle) darkToggle.classList.add('active');
+        localStorage.setItem('theme', 'light');
     } else {
         icon.className = 'fas fa-moon';
+        if (darkToggle) darkToggle.classList.remove('active');
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// ================================================================
+// LOAD SAVED THEME - DAY 3
+// ================================================================
+
+function loadSavedTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const icon = document.getElementById('themeIcon');
+    const darkToggle = document.getElementById('darkModeToggle');
+    
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        if (icon) icon.className = 'fas fa-sun';
+        if (darkToggle) darkToggle.classList.add('active');
+    } else {
+        document.body.classList.remove('light-mode');
+        if (icon) icon.className = 'fas fa-moon';
+        if (darkToggle) darkToggle.classList.remove('active');
     }
 }
 
@@ -74,12 +100,82 @@ function showPage(pageId, element) {
 }
 
 // ================================================================
-// NOTIFICATION TOGGLE
+// NOTIFICATION TOGGLE - UPDATED FOR DAY 2
 // ================================================================
 
 function toggleNotification() {
     const toggle = document.getElementById('notificationToggle');
     toggle.classList.toggle('active');
+    
+    // Save notification preference
+    const isEnabled = toggle.classList.contains('active');
+    localStorage.setItem('notifications', isEnabled ? 'enabled' : 'disabled');
+}
+
+// ================================================================
+// LOAD SAVED NOTIFICATION PREFERENCE - DAY 2
+// ================================================================
+
+function loadSavedNotification() {
+    const savedPref = localStorage.getItem('notifications');
+    const toggle = document.getElementById('notificationToggle');
+    
+    if (savedPref === 'disabled') {
+        toggle.classList.remove('active');
+    } else {
+        toggle.classList.add('active');
+    }
+}
+
+// ================================================================
+// UPDATE PROFILE - DAY 2
+// ================================================================
+
+function updateProfile() {
+    const nameInput = document.getElementById('profileName');
+    const emailInput = document.getElementById('profileEmail');
+    const messageDiv = document.getElementById('profileUpdateMessage');
+    
+    // Get values
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    
+    // Validate
+    if (name === '') {
+        messageDiv.className = 'profile-update-error';
+        messageDiv.textContent = '⚠️ Name cannot be empty!';
+        messageDiv.style.display = 'block';
+        return;
+    }
+    
+    if (email === '' || !email.includes('@')) {
+        messageDiv.className = 'profile-update-error';
+        messageDiv.textContent = '⚠️ Please enter a valid email address!';
+        messageDiv.style.display = 'block';
+        return;
+    }
+    
+    // Update sidebar profile
+    const sidebarName = document.querySelector('.sidebar-footer .profile-name');
+    if (sidebarName) {
+        sidebarName.textContent = name;
+    }
+    
+    // Update avatar initial
+    const avatar = document.querySelector('.sidebar-footer .profile-avatar');
+    if (avatar) {
+        avatar.textContent = name.charAt(0).toUpperCase();
+    }
+    
+    // Show success message
+    messageDiv.className = 'profile-update-success';
+    messageDiv.textContent = '✅ Profile updated successfully!';
+    messageDiv.style.display = 'block';
+    
+    // Hide message after 3 seconds
+    setTimeout(() => {
+        messageDiv.style.display = 'none';
+    }, 3000);
 }
 
 // ================================================================
@@ -218,7 +314,7 @@ function renderOrders() {
 }
 
 // ================================================================
-// CUSTOMER DATA (6 Customers) - MODULE 3 DAY 1
+// CUSTOMER DATA (6 Customers)
 // ================================================================
 
 const customersData = [
@@ -231,7 +327,7 @@ const customersData = [
 ];
 
 // ================================================================
-// RENDER CUSTOMERS - MODULE 3 DAY 1
+// RENDER CUSTOMERS
 // ================================================================
 
 function renderCustomers() {
@@ -370,11 +466,11 @@ document.addEventListener('DOMContentLoaded', function() {
         dashboardLink.classList.add('active');
     }
 
-    // Set dark mode toggle to inactive by default
-    const darkToggle = document.getElementById('darkModeToggle');
-    if (darkToggle) {
-        darkToggle.classList.remove('active');
-    }
+    // Load saved theme preference - DAY 3
+    loadSavedTheme();
+    
+    // Load saved notification preference - DAY 2
+    loadSavedNotification();
 
     // Load products
     renderProducts();
@@ -382,7 +478,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load orders
     renderOrders();
     
-    // Load customers - MODULE 3 DAY 1
+    // Load customers
     renderCustomers();
     
     // Update dashboard stats
@@ -393,4 +489,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 3 - Day 1 Complete! Customer data added!');
+console.log('📊 Module 3 - Day 2 & 3 Complete! Profile settings, theme toggle with localStorage, and notification preferences added!');
