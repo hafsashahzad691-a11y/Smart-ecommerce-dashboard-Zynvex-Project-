@@ -1,5 +1,4 @@
 # Smart E-Commerce Dashboard
-
 A responsive admin dashboard for managing e-commerce store operations.
 
 ## 📅 Project Timeline
