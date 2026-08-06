@@ -552,6 +552,20 @@ body {
 }
 
 /* ================================================================
+   SALES CHART - DAY 4
+   ================================================================ */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ================================================================
    RESPONSIVE - TABLETS & MOBILE
    ================================================================ */
 @media (max-width: 992px) {
@@ -588,6 +602,10 @@ body {
 
     .top-navbar {
         flex-wrap: wrap;
+    }
+    
+    .chart-container {
+        height: 220px;
     }
 }
 
@@ -657,6 +675,10 @@ body {
     .badge-status {
         font-size: 10px;
         padding: 3px 10px;
+    }
+    
+    .chart-container {
+        height: 180px;
     }
 }
 

@@ -16,6 +16,9 @@ function toggleTheme() {
         if (darkToggle) darkToggle.classList.remove('active');
         localStorage.setItem('theme', 'dark');
     }
+    
+    // Update chart colors - DAY 4
+    updateChartColors();
 }
 
 // ================================================================
@@ -444,6 +447,137 @@ function renderRecentOrders() {
 }
 
 // ================================================================
+// SALES DATA - DAY 4
+// ================================================================
+
+const salesData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    values: [12000, 15000, 18000, 22000, 28000, 35000, 42000, 48000, 52000, 58000, 62000, 68000]
+};
+
+// ================================================================
+// CREATE SALES CHART - DAY 4
+// ================================================================
+
+let salesChart = null;
+
+function createSalesChart() {
+    const ctx = document.getElementById('salesChart');
+    if (!ctx) return;
+    
+    const isLight = document.body.classList.contains('light-mode');
+    const gridColor = isLight ? '#e2e6ee' : '#1e2440';
+    const textColor = isLight ? '#6c7a8a' : '#5a6488';
+    
+    if (salesChart) {
+        salesChart.destroy();
+    }
+    
+    salesChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: salesData.labels,
+            datasets: [{
+                label: 'Sales',
+                data: salesData.values,
+                borderColor: '#0d6efd',
+                backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#0d6efd',
+                pointBorderColor: '#0d6efd',
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: textColor,
+                        font: {
+                            size: 13
+                        }
+                    }
+                },
+                tooltip: {
+                    backgroundColor: isLight ? '#ffffff' : '#0f1429',
+                    titleColor: isLight ? '#1a1a2e' : '#e8edf5',
+                    bodyColor: isLight ? '#1a1a2e' : '#e8edf5',
+                    borderColor: isLight ? '#e2e6ee' : '#1e2440',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    padding: 10,
+                    callbacks: {
+                        label: function(context) {
+                            return '$' + context.parsed.y.toLocaleString();
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: gridColor,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        color: textColor,
+                        font: {
+                            size: 11
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        color: gridColor,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        color: textColor,
+                        font: {
+                            size: 11
+                        },
+                        callback: function(value) {
+                            return '$' + value.toLocaleString();
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// ================================================================
+// UPDATE CHART COLORS - DAY 4
+// ================================================================
+
+function updateChartColors() {
+    if (salesChart) {
+        const isLight = document.body.classList.contains('light-mode');
+        const gridColor = isLight ? '#e2e6ee' : '#1e2440';
+        const textColor = isLight ? '#6c7a8a' : '#5a6488';
+        
+        salesChart.options.scales.x.grid.color = gridColor;
+        salesChart.options.scales.x.ticks.color = textColor;
+        salesChart.options.scales.y.grid.color = gridColor;
+        salesChart.options.scales.y.ticks.color = textColor;
+        
+        salesChart.options.plugins.legend.labels.color = textColor;
+        salesChart.options.plugins.tooltip.backgroundColor = isLight ? '#ffffff' : '#0f1429';
+        salesChart.options.plugins.tooltip.titleColor = isLight ? '#1a1a2e' : '#e8edf5';
+        salesChart.options.plugins.tooltip.bodyColor = isLight ? '#1a1a2e' : '#e8edf5';
+        salesChart.options.plugins.tooltip.borderColor = isLight ? '#e2e6ee' : '#1e2440';
+        
+        salesChart.update();
+    }
+}
+
+// ================================================================
 // INITIALIZE
 // ================================================================
 
@@ -486,7 +620,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Render recent orders on dashboard
     renderRecentOrders();
+    
+    // Create sales chart - DAY 4
+    createSalesChart();
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 3 - Day 2 & 3 Complete! Profile settings, theme toggle with localStorage, and notification preferences added!');
+console.log('📊 Module 3 - Day 4 Complete! Sales chart added to dashboard!');
