@@ -383,8 +383,10 @@ function renderRecentOrders() {
         const recentOrdersHTML = `
             <div class="row g-4 mt-4" id="recentOrdersContainer">
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">Recent Orders</div>
+                    <div class="card recent-orders-card">
+                        <div class="card-header">
+                            <i class="fas fa-clock me-2 text-primary"></i> Recent Orders
+                        </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table table-hover mb-0">
@@ -578,6 +580,86 @@ function updateChartColors() {
 }
 
 // ================================================================
+// TOP SELLING PRODUCTS DATA - DAY 5
+// ================================================================
+
+const topProductsData = [
+    { name: "Wireless Headphones", price: 89.99, sales: 245, category: "Electronics" },
+    { name: "Smart Watch Series 5", price: 159.99, sales: 189, category: "Electronics" },
+    { name: "Travel Backpack", price: 49.99, sales: 156, category: "Fashion" },
+    { name: "Running Shoes", price: 69.99, sales: 134, category: "Sports" },
+    { name: "Bluetooth Speaker", price: 39.99, sales: 112, category: "Electronics" }
+];
+
+// ================================================================
+// RENDER TOP SELLING PRODUCTS - DAY 5
+// ================================================================
+
+function renderTopProducts() {
+    let topContainer = document.getElementById('topProductsContainer');
+    
+    if (!topContainer) {
+        const dashboardPage = document.getElementById('page-dashboard');
+        if (!dashboardPage) return;
+        
+        const topProductsHTML = `
+            <div class="row g-4 mt-4" id="topProductsContainer">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-crown me-2 text-warning"></i> Top Selling Products
+                        </div>
+                        <div class="card-body" id="topProductsList">
+                            <!-- Top products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        dashboardPage.insertAdjacentHTML('beforeend', topProductsHTML);
+        topContainer = document.getElementById('topProductsContainer');
+    }
+
+    const listContainer = document.getElementById('topProductsList');
+    if (!listContainer) return;
+    listContainer.innerHTML = '';
+
+    topProductsData.forEach((product, index) => {
+        const rank = index + 1;
+        let rankClass = '';
+        let medalIcon = '';
+        
+        if (rank === 1) {
+            rankClass = 'text-warning';
+            medalIcon = '🥇';
+        } else if (rank === 2) {
+            rankClass = 'text-secondary';
+            medalIcon = '🥈';
+        } else if (rank === 3) {
+            rankClass = 'text-danger';
+            medalIcon = '🥉';
+        } else {
+            rankClass = 'text-muted';
+            medalIcon = `#${rank}`;
+        }
+        
+        listContainer.innerHTML += `
+            <div class="top-product-item">
+                <div class="top-product-rank ${rankClass}">${medalIcon}</div>
+                <div class="top-product-info">
+                    <div class="top-product-name">${product.name}</div>
+                    <div class="top-product-category">${product.category}</div>
+                </div>
+                <div class="top-product-sales">
+                    <div class="top-product-price">$${product.price.toFixed(2)}</div>
+                    <div class="top-product-count">${product.sales} sales</div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// ================================================================
 // INITIALIZE
 // ================================================================
 
@@ -623,7 +705,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create sales chart - DAY 4
     createSalesChart();
+    
+    // Render top selling products - DAY 5
+    renderTopProducts();
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 3 - Day 4 Complete! Sales chart added to dashboard!');
+console.log('📊 Module 3 - Day 5 Complete! Top selling products added to dashboard!');
+console.log('✅ Module 3 Complete!');
