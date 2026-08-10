@@ -185,7 +185,7 @@ function updateProfile() {
 // PRODUCT DATA (8 Products)
 // ================================================================
 
-const productsData = [
+let productsData = [
     { id: 1, name: "Wireless Headphones", price: 89.99, category: "Electronics" },
     { id: 2, name: "Smart Watch Series 5", price: 159.99, category: "Electronics" },
     { id: 3, name: "Cotton T-Shirt", price: 19.99, category: "Fashion" },
@@ -258,6 +258,66 @@ function filterProducts() {
             </div>
         `;
     });
+}
+
+// ================================================================
+// ADD PRODUCT - MODULE 4 DAY 1
+// ================================================================
+
+function addProduct() {
+    // Get values from form
+    const nameInput = document.getElementById('newProductName');
+    const priceInput = document.getElementById('newProductPrice');
+    const categorySelect = document.getElementById('newProductCategory');
+    
+    const name = nameInput.value.trim();
+    const price = parseFloat(priceInput.value);
+    const category = categorySelect.value;
+    
+    // Validate
+    if (name === '') {
+        alert('⚠️ Please enter a product name!');
+        nameInput.focus();
+        return;
+    }
+    
+    if (isNaN(price) || price <= 0) {
+        alert('⚠️ Please enter a valid price!');
+        priceInput.focus();
+        return;
+    }
+    
+    // Create new product
+    const newProduct = {
+        id: productsData.length + 1,
+        name: name,
+        price: price,
+        category: category
+    };
+    
+    // Add to products array
+    productsData.push(newProduct);
+    
+    // Refresh product display
+    renderProducts();
+    
+    // Update dashboard stats
+    updateDashboardStats();
+    
+    // Clear form
+    nameInput.value = '';
+    priceInput.value = '';
+    categorySelect.value = 'Electronics';
+    
+    // Close modal
+    const modal = document.getElementById('addProductModal');
+    const modalInstance = bootstrap.Modal.getInstance(modal);
+    if (modalInstance) {
+        modalInstance.hide();
+    }
+    
+    // Show success message
+    alert('✅ Product "' + name + '" added successfully!');
 }
 
 // ================================================================
@@ -711,5 +771,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('🚀 SmartShop Dashboard loaded successfully!');
-console.log('📊 Module 3 - Day 5 Complete! Top selling products added to dashboard!');
-console.log('✅ Module 3 Complete!');
+console.log('📊 Module 4 - Day 1 Complete! Add Product functionality added!');
