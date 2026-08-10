@@ -1,25 +1,13 @@
 # Smart E-Commerce Dashboard
+
 A responsive admin dashboard for managing e-commerce store operations.
-## 📅 Project Timeline
-- **Start Date:** July 20, 2026
-- **End Date:** August 15, 2026
-## 📁 Project Structure
-smart-ecommerce-dashboard/
-│
-├── index.html # Main HTML file
-├── style.css # Custom CSS styles
-└── script.js # JavaScript functionality
 
-## 🚀 Features
+## Project Timeline
 
-- 📊 Dashboard with sales statistics
-- 📦 Product management with search and filter
-- 🛒 Order tracking with status badges
-- 👥 Customer management
-- ⚙️ Settings with dark/light mode
-- 📱 Fully responsive design
+- Start Date: July 20, 2026
+- End Date: August 15, 2026
 
-## 💻 Technologies Used
+## Technologies Used
 
 - HTML5
 - CSS3
@@ -27,36 +15,52 @@ smart-ecommerce-dashboard/
 - JavaScript
 - Chart.js
 - Font Awesome
-## 🎯 How to Run
+
+## Features
+
+- Dashboard with sales stats and charts
+- Product management with search, filter, and add product
+- Order tracking with status badges
+- Customer management
+- Settings with dark/light mode
+- Fully responsive design
+## How to Run
 
 1. Clone the repository
-2. Open `index.html` in your browser
+2. Open "index.html" in your browser
 
-## 📊 Modules
+## Modules
 
 | Module | Description |
 |--------|-------------|
-| Dashboard | Sales stats, charts, and recent orders |
-| Products | Product catalog with search and filter |
-| Orders | Order tracking with status badges |
-| Customers | Customer information and history |
-| Settings | Profile and theme preferences
-## 👤 Author
+| Dashboard | Sales stats, charts, recent orders, top products |
+| Products | Add, search, and filter products |
+| Orders | Track orders with status badges |
+| Customers | View customer information |
+| Settings | Profile and theme preferences |
+
+---
+
+## Author
 
 **Hafsa Shahzad**
-
 - Internship ID: ZYNVEX-CERT-0254
 
-## 📅 Progress Report
+## Progress Report
 
-### Module 1 (July 20 - July 26, 2026)
+### Module 1 - ✅ Complete (July 20-26)
+Project setup, sidebar navigation, dashboard with 4 stat cards, mobile responsive.
 
-Project setup completed with HTML, CSS, JS files and CDN integrations. Built responsive sidebar with 5 navigation links and Dashboard with 4 stat cards. Added collapsible sidebar for mobile devices and page navigation functionality.
+### Module 2 - ✅ Complete (July 27 - Aug 2)
+Product data, search and filter, orders data with status badges.
 
-### Module 2 (July 27 - August 2, 2026)
+### Module 3 - ✅ Complete (Aug 3-9)
+Customer data, settings page, dark/light mode, sales chart, top selling products.
 
-Added product data with search and category filter functionality. Created orders data with color-coded status badges. Updated dashboard stats with real data and added recent orders section.
+### Module 4 - 🔄 In Progress (Aug 10-15)
 
-### Module 3 (August 3 - August 9, 2026)
-
-Added customer data with name, email, phone, and total orders. Created dynamic customer table. Built settings page with profile section and preference toggles. Implemented dark/light mode switching. Added sales chart on dashboard using Chart.js. Displayed top selling products on dashboard.
+**Day 1 - ✅ Complete (Aug 10)**
+- Add Product modal works
+- Form validation added
+- Products add to list dynamically
+- Dashboard stats update
