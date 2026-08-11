@@ -1,7 +1,3 @@
-// ================================================================
-// THEME TOGGLE (Dark/Light) - UPDATED FOR DAY 3
-// ================================================================
-
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
     const icon = document.getElementById('themeIcon');
@@ -17,13 +13,11 @@ function toggleTheme() {
         localStorage.setItem('theme', 'dark');
     }
     
-    // Update chart colors - DAY 4
+
     updateChartColors();
 }
 
-// ================================================================
-// LOAD SAVED THEME - DAY 3
-// ================================================================
+
 
 function loadSavedTheme() {
     const savedTheme = localStorage.getItem('theme');
@@ -41,9 +35,7 @@ function loadSavedTheme() {
     }
 }
 
-// ================================================================
-// SIDEBAR TOGGLE FUNCTIONS (Mobile)
-// ================================================================
+
 
 function openSidebar() {
     document.getElementById('sidebar').classList.add('show');
@@ -55,23 +47,20 @@ function closeSidebar() {
     document.getElementById('sidebarOverlay').classList.remove('show');
 }
 
-// ================================================================
-// PAGE NAVIGATION
-// ================================================================
+
 
 function showPage(pageId, element) {
-    // Hide all pages
+   
     document.querySelectorAll('.page-section').forEach(section => {
         section.classList.remove('active');
     });
 
-    // Show selected page
+   
     const targetPage = document.getElementById('page-' + pageId);
     if (targetPage) {
         targetPage.classList.add('active');
     }
 
-    // Update active nav link
     document.querySelectorAll('.sidebar .nav-link').forEach(link => {
         link.classList.remove('active');
     });
@@ -79,7 +68,7 @@ function showPage(pageId, element) {
         element.classList.add('active');
     }
 
-    // Update page title in navbar
+    
     const pageTitles = {
         dashboard: 'Dashboard',
         products: 'Products',
@@ -98,26 +87,21 @@ function showPage(pageId, element) {
     const icon = iconMap[pageId] || 'fa-th-large';
     document.querySelector('.page-title').innerHTML = `<i class="fas ${icon}"></i> ${title}`;
 
-    // Close sidebar on mobile
+    
     closeSidebar();
 }
 
-// ================================================================
-// NOTIFICATION TOGGLE - UPDATED FOR DAY 2
-// ================================================================
+
 
 function toggleNotification() {
     const toggle = document.getElementById('notificationToggle');
     toggle.classList.toggle('active');
     
-    // Save notification preference
     const isEnabled = toggle.classList.contains('active');
     localStorage.setItem('notifications', isEnabled ? 'enabled' : 'disabled');
 }
 
-// ================================================================
-// LOAD SAVED NOTIFICATION PREFERENCE - DAY 2
-// ================================================================
+
 
 function loadSavedNotification() {
     const savedPref = localStorage.getItem('notifications');
@@ -130,20 +114,18 @@ function loadSavedNotification() {
     }
 }
 
-// ================================================================
-// UPDATE PROFILE - DAY 2
-// ================================================================
+
 
 function updateProfile() {
     const nameInput = document.getElementById('profileName');
     const emailInput = document.getElementById('profileEmail');
     const messageDiv = document.getElementById('profileUpdateMessage');
     
-    // Get values
+
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     
-    // Validate
+   
     if (name === '') {
         messageDiv.className = 'profile-update-error';
         messageDiv.textContent = '⚠️ Name cannot be empty!';
@@ -158,32 +140,30 @@ function updateProfile() {
         return;
     }
     
-    // Update sidebar profile
+
     const sidebarName = document.querySelector('.sidebar-footer .profile-name');
     if (sidebarName) {
         sidebarName.textContent = name;
     }
     
-    // Update avatar initial
+
     const avatar = document.querySelector('.sidebar-footer .profile-avatar');
     if (avatar) {
         avatar.textContent = name.charAt(0).toUpperCase();
     }
+
     
-    // Show success message
     messageDiv.className = 'profile-update-success';
     messageDiv.textContent = '✅ Profile updated successfully!';
     messageDiv.style.display = 'block';
     
-    // Hide message after 3 seconds
+    
     setTimeout(() => {
         messageDiv.style.display = 'none';
     }, 3000);
 }
 
-// ================================================================
-// PRODUCT DATA (8 Products)
-// ================================================================
+
 
 let productsData = [
     { id: 1, name: "Wireless Headphones", price: 89.99, category: "Electronics" },
@@ -196,9 +176,7 @@ let productsData = [
     { id: 8, name: "Desk Lamp", price: 34.99, category: "Home & Living" }
 ];
 
-// ================================================================
-// RENDER PRODUCTS
-// ================================================================
+
 
 function renderProducts() {
     const grid = document.getElementById('productGrid');
@@ -219,9 +197,6 @@ function renderProducts() {
     });
 }
 
-// ================================================================
-// FILTER PRODUCTS (Search + Category)
-// ================================================================
 
 function filterProducts() {
     const searchTerm = document.getElementById('productSearch').value.toLowerCase();
@@ -260,12 +235,10 @@ function filterProducts() {
     });
 }
 
-// ================================================================
-// ADD PRODUCT - MODULE 4 DAY 1
-// ================================================================
+
 
 function addProduct() {
-    // Get values from form
+    
     const nameInput = document.getElementById('newProductName');
     const priceInput = document.getElementById('newProductPrice');
     const categorySelect = document.getElementById('newProductCategory');
@@ -274,7 +247,7 @@ function addProduct() {
     const price = parseFloat(priceInput.value);
     const category = categorySelect.value;
     
-    // Validate
+
     if (name === '') {
         alert('⚠️ Please enter a product name!');
         nameInput.focus();
@@ -287,7 +260,7 @@ function addProduct() {
         return;
     }
     
-    // Create new product
+   
     const newProduct = {
         id: productsData.length + 1,
         name: name,
@@ -295,34 +268,31 @@ function addProduct() {
         category: category
     };
     
-    // Add to products array
+  
     productsData.push(newProduct);
     
-    // Refresh product display
+    
     renderProducts();
     
-    // Update dashboard stats
     updateDashboardStats();
     
-    // Clear form
+    
     nameInput.value = '';
     priceInput.value = '';
     categorySelect.value = 'Electronics';
     
-    // Close modal
+    
     const modal = document.getElementById('addProductModal');
     const modalInstance = bootstrap.Modal.getInstance(modal);
     if (modalInstance) {
         modalInstance.hide();
     }
     
-    // Show success message
+
     alert('✅ Product "' + name + '" added successfully!');
 }
 
-// ================================================================
-// ORDERS DATA (8 Orders)
-// ================================================================
+
 
 const ordersData = [
     { id: "ORD-001", customer: "John Doe", email: "john@email.com", date: "2025-05-31", amount: 250.00, status: "Delivered" },
@@ -335,9 +305,7 @@ const ordersData = [
     { id: "ORD-008", customer: "Amanda Lee", email: "amanda@email.com", date: "2025-05-24", amount: 130.00, status: "Delivered" }
 ];
 
-// ================================================================
-// RENDER ORDERS
-// ================================================================
+
 
 function renderOrders() {
     const tableBody = document.getElementById('ordersTableBody');
@@ -376,9 +344,7 @@ function renderOrders() {
     });
 }
 
-// ================================================================
-// CUSTOMER DATA (6 Customers)
-// ================================================================
+
 
 const customersData = [
     { name: "John Doe", email: "john@email.com", phone: "+1 234 567 8901", orders: 5 },
@@ -389,9 +355,6 @@ const customersData = [
     { name: "Lisa Taylor", email: "lisa@email.com", phone: "+1 234 567 8906", orders: 6 }
 ];
 
-// ================================================================
-// RENDER CUSTOMERS
-// ================================================================
 
 function renderCustomers() {
     const tableBody = document.getElementById('customersTableBody');
@@ -410,9 +373,7 @@ function renderCustomers() {
     });
 }
 
-// ================================================================
-// UPDATE DASHBOARD STATS
-// ================================================================
+
 
 function updateDashboardStats() {
     const totalSales = ordersData.reduce((sum, order) => sum + order.amount, 0);
@@ -429,9 +390,7 @@ function updateDashboardStats() {
     }
 }
 
-// ================================================================
-// RENDER RECENT ORDERS ON DASHBOARD
-// ================================================================
+
 
 function renderRecentOrders() {
     let recentContainer = document.getElementById('recentOrdersContainer');
@@ -508,18 +467,12 @@ function renderRecentOrders() {
     });
 }
 
-// ================================================================
-// SALES DATA - DAY 4
-// ================================================================
 
 const salesData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     values: [12000, 15000, 18000, 22000, 28000, 35000, 42000, 48000, 52000, 58000, 62000, 68000]
 };
 
-// ================================================================
-// CREATE SALES CHART - DAY 4
-// ================================================================
 
 let salesChart = null;
 
@@ -614,9 +567,7 @@ function createSalesChart() {
     });
 }
 
-// ================================================================
-// UPDATE CHART COLORS - DAY 4
-// ================================================================
+
 
 function updateChartColors() {
     if (salesChart) {
@@ -639,9 +590,7 @@ function updateChartColors() {
     }
 }
 
-// ================================================================
-// TOP SELLING PRODUCTS DATA - DAY 5
-// ================================================================
+
 
 const topProductsData = [
     { name: "Wireless Headphones", price: 89.99, sales: 245, category: "Electronics" },
@@ -651,9 +600,7 @@ const topProductsData = [
     { name: "Bluetooth Speaker", price: 39.99, sales: 112, category: "Electronics" }
 ];
 
-// ================================================================
-// RENDER TOP SELLING PRODUCTS - DAY 5
-// ================================================================
+
 
 function renderTopProducts() {
     let topContainer = document.getElementById('topProductsContainer');
@@ -719,12 +666,10 @@ function renderTopProducts() {
     });
 }
 
-// ================================================================
-// INITIALIZE
-// ================================================================
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Show dashboard page
+  
     document.querySelectorAll('.page-section').forEach(section => {
         section.classList.remove('active');
     });
@@ -733,7 +678,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dashboardPage.classList.add('active');
     }
 
-    // Set dashboard link as active
+   
     document.querySelectorAll('.sidebar .nav-link').forEach(link => {
         link.classList.remove('active');
     });
@@ -742,31 +687,26 @@ document.addEventListener('DOMContentLoaded', function() {
         dashboardLink.classList.add('active');
     }
 
-    // Load saved theme preference - DAY 3
+  
     loadSavedTheme();
     
-    // Load saved notification preference - DAY 2
     loadSavedNotification();
 
-    // Load products
+    
     renderProducts();
     
-    // Load orders
     renderOrders();
     
-    // Load customers
+
     renderCustomers();
-    
-    // Update dashboard stats
+
     updateDashboardStats();
     
-    // Render recent orders on dashboard
     renderRecentOrders();
     
-    // Create sales chart - DAY 4
     createSalesChart();
     
-    // Render top selling products - DAY 5
+    
     renderTopProducts();
 });
 

@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #0a0e1a;
@@ -922,4 +923,162 @@ body.light-mode .top-product-category {
 
 body.light-mode .top-product-count {
     color: #6c7a8a;
+}
+
+/* ================================================================
+   PREFERENCES SECTION - FIX FOR DARK THEME
+   ================================================================ */
+
+/* Dark Mode - Preferences Card */
+body:not(.light-mode) .card {
+    background: #0f1429;
+    border: 1px solid #1e2440;
+}
+
+body:not(.light-mode) .card-header {
+    background: transparent;
+    border-bottom: 1px solid #1e2440;
+    color: #e8edf5;
+}
+
+body:not(.light-mode) .card-body {
+    color: #e8edf5;
+}
+
+body:not(.light-mode) .card-body span {
+    color: #e8edf5;
+}
+
+body:not(.light-mode) .card-body hr {
+    border-color: #1e2440;
+}
+
+/* Toggle Switch in Dark Mode */
+body:not(.light-mode) .toggle-switch {
+    background: #1e2440;
+}
+
+body:not(.light-mode) .toggle-switch .toggle-circle {
+    background: #ffffff;
+}
+
+body:not(.light-mode) .toggle-switch.active {
+    background: #0d6efd;
+}
+
+body:not(.light-mode) .toggle-switch.active .toggle-circle {
+    background: #ffffff;
+}
+
+/* Form Controls in Dark Mode */
+body:not(.light-mode) .form-control {
+    background: #1a2040;
+    border: 1px solid #1e2440;
+    color: #e8edf5;
+}
+
+body:not(.light-mode) .form-control:focus {
+    background: #1a2040;
+    border-color: #0d6efd;
+    color: #e8edf5;
+}
+
+body:not(.light-mode) .form-label {
+    color: #8892b0;
+}
+
+/* Buttons in Dark Mode */
+body:not(.light-mode) .btn-primary {
+    background: #0d6efd;
+    border-color: #0d6efd;
+}
+
+body:not(.light-mode) .btn-danger {
+    background: #dc3545;
+    border-color: #dc3545;
+}
+
+/* ================================================================
+   PREFERENCES SECTION - LIGHT THEME
+   ================================================================ */
+
+body.light-mode .card {
+    background: #ffffff;
+    border: 1px solid #e2e6ee;
+}
+
+body.light-mode .card-header {
+    color: #1a1a2e;
+    border-bottom: 1px solid #e2e6ee;
+}
+
+body.light-mode .card-body span {
+    color: #1a1a2e;
+}
+
+body.light-mode .card-body hr {
+    border-color: #e2e6ee;
+}
+
+body.light-mode .toggle-switch {
+    background: #d0d5dd;
+}
+
+body.light-mode .toggle-switch .toggle-circle {
+    background: #ffffff;
+}
+
+body.light-mode .toggle-switch.active {
+    background: #0d6efd;
+}
+
+body.light-mode .toggle-switch.active .toggle-circle {
+    background: #ffffff;
+}
+/* ================================================================
+   FORCE FIX - CUSTOMER TABLE DARK MODE
+   ================================================================ */
+
+/* Force dark background for tables in dark mode */
+body:not(.light-mode) .table {
+    background-color: #12162b !important;
+    color: #e8edf5 !important;
+}
+
+body:not(.light-mode) .table thead th {
+    background-color: #0f1429 !important;
+    color: #8892b0 !important;
+    border-bottom: 2px solid #1e2440 !important;
+}
+
+body:not(.light-mode) .table td {
+    background-color: #12162b !important;
+    color: #e8edf5 !important;
+    border-bottom: 1px solid #1e2440 !important;
+}
+
+body:not(.light-mode) .table tbody tr:hover td {
+    background-color: rgba(13, 110, 253, 0.08) !important;
+}
+
+/* Force white background for tables in light mode */
+body.light-mode .table {
+    background-color: #ffffff !important;
+    color: #1a1a2e !important;
+}
+
+body.light-mode .table thead th {
+    background-color: #f8fafc !important;
+    color: #4a4a6a !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+}
+
+body.light-mode .table td {
+    background-color: #ffffff !important;
+    color: #1a1a2e !important;
+    border-bottom: 1px solid #eef2f6 !important;
+}
+
+body.light-mode .table tbody tr:hover td {
+    background-color: #f8fafc !important;
 }
