@@ -1,7 +1,6 @@
 # Smart E-Commerce Dashboard
 
 A responsive admin dashboard for managing e-commerce store operations.
-
 ## Project Timeline
 
 - Start Date: July 20, 2026
