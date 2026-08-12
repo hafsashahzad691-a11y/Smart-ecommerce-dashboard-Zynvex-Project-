@@ -2,7 +2,7 @@ function toggleTheme() {
     document.body.classList.toggle('light-mode');
     const icon = document.getElementById('themeIcon');
     const darkToggle = document.getElementById('darkModeToggle');
-    
+
     if (document.body.classList.contains('light-mode')) {
         icon.className = 'fas fa-sun';
         if (darkToggle) darkToggle.classList.add('active');
