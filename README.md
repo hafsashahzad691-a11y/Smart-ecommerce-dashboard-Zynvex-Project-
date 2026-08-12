@@ -5,7 +5,6 @@ A responsive admin dashboard for managing e-commerce store operations.
 
 - Start Date: July 20, 2026
 - End Date: August 15, 2026
-
 ## Technologies Used
 
 - HTML5
