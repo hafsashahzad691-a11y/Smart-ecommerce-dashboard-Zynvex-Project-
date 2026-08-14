@@ -1,11 +1,10 @@
-/* ================================================================
-   RESET & BASE
-   ================================================================ */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #0a0e1a;
@@ -14,9 +13,6 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ================================================================
-   SIDEBAR
-   ================================================================ */
 .sidebar {
     height: 100vh;
     width: 260px;
@@ -81,9 +77,6 @@ body {
     flex: 1;
 }
 
-/* ================================================================
-   SIDEBAR FOOTER - PROFILE
-   ================================================================ */
 .sidebar-footer {
     padding: 16px 24px;
     border-top: 1px solid #1e2440;
@@ -123,19 +116,12 @@ body {
     transition: color 0.3s ease;
 }
 
-/* ================================================================
-   MAIN CONTENT
-   ================================================================ */
 .main-content {
     margin-left: 260px;
     padding: 28px 32px 40px 32px;
     min-height: 100vh;
     transition: background 0.3s ease;
 }
-
-/* ================================================================
-   TOP NAVBAR
-   ================================================================ */
 .top-navbar {
     display: flex;
     justify-content: space-between;
@@ -175,9 +161,6 @@ body {
     color: #0d6efd;
 }
 
-/* ================================================================
-   WELCOME SECTION
-   ================================================================ */
 .welcome-section {
     margin-bottom: 32px;
 }
@@ -201,9 +184,7 @@ body {
     transition: color 0.3s ease;
 }
 
-/* ================================================================
-   STAT CARDS
-   ================================================================ */
+
 .stat-card {
     background: #0f1429;
     border: 1px solid #1e2440;
@@ -272,9 +253,6 @@ body {
     transition: color 0.3s ease;
 }
 
-/* ================================================================
-   HAMBURGER MENU BUTTON (Mobile Only)
-   ================================================================ */
 .hamburger-btn {
     display: none;
     background: none;
@@ -291,9 +269,7 @@ body {
     color: #0d6efd;
 }
 
-/* ================================================================
-   SIDEBAR OVERLAY (Mobile Only)
-   ================================================================ */
+
 .sidebar-overlay {
     display: none;
     position: fixed;
@@ -309,9 +285,7 @@ body {
     display: block;
 }
 
-/* ================================================================
-   PAGE SECTIONS (Show/Hide)
-   ================================================================ */
+
 .page-section {
     display: none;
     animation: fadeIn 0.4s ease;
@@ -332,9 +306,6 @@ body {
     }
 }
 
-/* ================================================================
-   PRODUCT CARDS
-   ================================================================ */
 .product-card {
     background: #0f1429;
     border: 1px solid #1e2440;
@@ -377,9 +348,6 @@ body {
     transition: color 0.3s ease;
 }
 
-/* ================================================================
-   ORDERS TABLE
-   ================================================================ */
 .table {
     color: #e8edf5;
     font-size: 13px;
@@ -408,9 +376,7 @@ body {
     background: rgba(13, 110, 253, 0.04);
 }
 
-/* ================================================================
-   STATUS BADGES
-   ================================================================ */
+
 .badge-status {
     padding: 4px 14px;
     border-radius: 50px;
@@ -439,9 +405,7 @@ body {
     color: #dc3545;
 }
 
-/* ================================================================
-   CARDS
-   ================================================================ */
+
 .card {
     background: #0f1429;
     border: 1px solid #1e2440;
@@ -464,9 +428,7 @@ body {
     padding: 20px 24px;
 }
 
-/* ================================================================
-   FORM ELEMENTS
-   ================================================================ */
+
 .form-control,
 .form-select {
     background: #1a2040;
@@ -497,9 +459,6 @@ body {
     transition: color 0.3s ease;
 }
 
-/* ================================================================
-   TOGGLE SWITCH
-   ================================================================ */
 .toggle-switch {
     width: 46px;
     height: 24px;
@@ -529,9 +488,6 @@ body {
     left: 25px;
 }
 
-/* ================================================================
-   PROFILE UPDATE MESSAGE - DAY 2 & 3
-   ================================================================ */
 .profile-update-success {
     color: #198754;
     font-size: 14px;
@@ -550,9 +506,7 @@ body {
     border-left: 4px solid #dc3545;
 }
 
-/* ================================================================
-   SALES CHART - DAY 4
-   ================================================================ */
+
 .chart-container {
     position: relative;
     height: 300px;
@@ -564,9 +518,7 @@ body {
     height: 100% !important;
 }
 
-/* ================================================================
-   TOP SELLING PRODUCTS - DAY 5
-   ================================================================ */
+
 .top-product-item {
     display: flex;
     align-items: center;
@@ -637,9 +589,7 @@ body {
     transition: color 0.3s ease;
 }
 
-/* ================================================================
-   RESPONSIVE - TABLETS & MOBILE
-   ================================================================ */
+
 @media (max-width: 992px) {
     .hamburger-btn {
         display: block;
@@ -681,9 +631,6 @@ body {
     }
 }
 
-/* ================================================================
-   RESPONSIVE - MOBILE PHONES
-   ================================================================ */
 @media (max-width: 576px) {
     .stat-card {
         flex-direction: column;
@@ -754,9 +701,7 @@ body {
     }
 }
 
-/* ================================================================
-   LIGHT THEME
-   ================================================================ */
+
 body.light-mode {
     background: #f0f2f8;
     color: #1a1a2e;
@@ -907,7 +852,7 @@ body.light-mode .toggle-switch.active {
     background: #0d6efd;
 }
 
-/* Light Mode Top Products */
+
 body.light-mode .top-product-item {
     border-bottom: 1px solid #eef0f5;
 }
@@ -924,11 +869,7 @@ body.light-mode .top-product-count {
     color: #6c7a8a;
 }
 
-/* ================================================================
-   PREFERENCES SECTION - FIX FOR DARK THEME
-   ================================================================ */
 
-/* Dark Mode - Preferences Card */
 body:not(.light-mode) .card {
     background: #0f1429;
     border: 1px solid #1e2440;
@@ -952,7 +893,6 @@ body:not(.light-mode) .card-body hr {
     border-color: #1e2440;
 }
 
-/* Toggle Switch in Dark Mode */
 body:not(.light-mode) .toggle-switch {
     background: #1e2440;
 }
@@ -969,7 +909,7 @@ body:not(.light-mode) .toggle-switch.active .toggle-circle {
     background: #ffffff;
 }
 
-/* Form Controls in Dark Mode */
+
 body:not(.light-mode) .form-control {
     background: #1a2040;
     border: 1px solid #1e2440;
@@ -986,7 +926,7 @@ body:not(.light-mode) .form-label {
     color: #8892b0;
 }
 
-/* Buttons in Dark Mode */
+
 body:not(.light-mode) .btn-primary {
     background: #0d6efd;
     border-color: #0d6efd;
@@ -996,10 +936,6 @@ body:not(.light-mode) .btn-danger {
     background: #dc3545;
     border-color: #dc3545;
 }
-
-/* ================================================================
-   PREFERENCES SECTION - LIGHT THEME
-   ================================================================ */
 
 body.light-mode .card {
     background: #ffffff;
@@ -1034,11 +970,7 @@ body.light-mode .toggle-switch.active {
 body.light-mode .toggle-switch.active .toggle-circle {
     background: #ffffff;
 }
-/* ================================================================
-   FORCE FIX - CUSTOMER TABLE DARK MODE
-   ================================================================ */
 
-/* Force dark background for tables in dark mode */
 body:not(.light-mode) .table {
     background-color: #12162b !important;
     color: #e8edf5 !important;
@@ -1060,7 +992,7 @@ body:not(.light-mode) .table tbody tr:hover td {
     background-color: rgba(13, 110, 253, 0.08) !important;
 }
 
-/* Force white background for tables in light mode */
+
 body.light-mode .table {
     background-color: #ffffff !important;
     color: #1a1a2e !important;
